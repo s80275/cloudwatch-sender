@@ -9,15 +9,16 @@ module Cloudwatch
           @sender = sender
         end
 
-        START_TIME = 180
+        # previos second
+        START_TIME = 10 * 60
 
         def metrics(component_meta, metric)
           resp = cloudwatch.get_metric_statistics(
             :namespace   => component_meta["namespace"],
             :metric_name => metric["name"],
-            :start_time  => Time.now - START_TIME,
-            :end_time    => Time.now,
-            :period      => 60,
+            :start_time  => Time.now.utc - START_TIME,
+            :end_time    => Time.now.utc,
+            :period      => 5 * 60,
             :statistics  => metric["statistics"],
             :unit        => metric["unit"]
           )
