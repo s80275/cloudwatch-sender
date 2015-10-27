@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
 
-  spec.add_runtime_dependency "aws-sdk"
-  spec.add_runtime_dependency "thor"
-  spec.add_runtime_dependency "influxdb"
+  spec.add_runtime_dependency "aws-sdk", '~> 2.1', '>= 2.1.32'
+  spec.add_runtime_dependency "thor", "~> 0.19.1", ">= 0.19"
+  spec.add_runtime_dependency "influxdb", "~> 0.2.2", ">= 0.2"
 end

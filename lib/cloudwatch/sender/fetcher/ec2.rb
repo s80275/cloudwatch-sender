@@ -15,7 +15,10 @@ module Cloudwatch
 
         attr_reader :cloudwatch, :sender
 
-        START_TIME = 180
+        # previos second
+        START_TIME = 10 * 60
+        puts(Time.now.utc - START_TIME)
+        puts(Time.now.utc)
 
         def ec2_metrics(instance_list, component_meta, metric)
           instance_list.each do |instance|
@@ -32,7 +35,7 @@ module Cloudwatch
             :dimensions  => [{ :name => "InstanceId", :value => instance }],
             :start_time  => Time.now - START_TIME,
             :end_time    => Time.now,
-            :period      => 60,
+            :period      => 5 * 60,
             :statistics  => metric["statistics"],
             :unit        => metric["unit"]
           }
