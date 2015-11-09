@@ -24,7 +24,9 @@ module Cloudwatch
           instance_list.each do |instance|
             metric_data = aws_metric_meta(component_meta, metric, instance)
             resp = cloudwatch.get_metric_statistics metric_data
-            name_metrics(resp, instance, component_meta["ec2_tag_value"], metric["statistics"])
+            service = ec2.get_instance_name(instance)
+            puts(instance+":"+service)
+            name_metrics(resp, instance, component_meta["ec2_tag_value"], metric["statistics"], service)
           end
         end
 
@@ -51,9 +53,9 @@ module Cloudwatch
           ).flatten
         end
 
-        def name_metrics(resp, instance, name, statistics)
+        def name_metrics(resp, instance, name, statistics, service)
           resp.data["datapoints"].each do |data|
-            check_statistics(instance, name, resp.data["label"], statistics, metric_time(data), data)
+            check_statistics(instance, name, resp.data["label"], statistics, metric_time(data), data, service)
           end
         end
 
@@ -61,10 +63,10 @@ module Cloudwatch
           data["timestamp"].to_i
         end
 
-        def check_statistics(instanceid, name, label, statistics, time, data)
+        def check_statistics(instanceid, name, label, statistics, time, data, service)
           statistics.each do |stat|
             data = {
-              :tags      => { name.tr("^A-Za-z0-9", "") => label.downcase, "instance" => instanceid.tr("-", "") },
+              :tags      => { "metrics" => label, "instance" => instanceid, "service" => service.tr("^A-Za-z0-9", "") },
               :timestamp => time,
               :values    => { :value => data[stat.downcase] }
             }
