@@ -13,7 +13,6 @@ module Cloudwatch
       end
 
       def get_instance_name(instanceid)
-        puts("----------------")
         instances = ec2.describe_instances({
           dry_run: false,
           instance_ids: [instanceid]

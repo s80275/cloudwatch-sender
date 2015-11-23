@@ -26,7 +26,16 @@ module Cloudwatch
         end
 
         def fetcher(component_meta)
-          namespace.start_with?("AWS/") ? Object.const_get(class_namespace component_meta) : Cloudwatch::Sender::Fetcher::Custom
+          case namespace
+          when "AWS/EC2"
+            Object.const_get(class_namespace component_meta)
+          when "AWS/SQS"
+            Object.const_get(class_namespace component_meta)
+          when "System/Linux"
+            Cloudwatch::Sender::Fetcher::Linux
+          else
+            Cloudwatch::Sender::Fetcher::Custom
+          end
         end
 
         def class_namespace(component_meta)

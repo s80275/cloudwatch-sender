@@ -45,7 +45,7 @@ module Cloudwatch
               :values    => { :value => data[stat.downcase] }
             }
 
-            sender.write_data(data)
+            #sender.write_data(data)
           end
         end
       end

@@ -10,7 +10,7 @@ influx_options:
   influx_password: "zaq1xsw2"
 
 metric_types:
-## EC2 Metrics
+# EC2 Metrics
 -
   namespace: "AWS/EC2"
   ec2_tag_key: "Type"
@@ -29,5 +29,48 @@ metric_types:
     -
       name: "NetworkOut"
       unit: "Bytes"
+      statistics:
+        - Average
+
+## Linux System Metrics
+-
+  namespace: "System/Linux"
+  ec2_tag_key: "Type"
+  ec2_tag_value: "AP"
+  metrics:
+    -
+      name: "MemoryAvailable"
+      unit: "Megabytes"
+      statistics:
+        - Average
+    -
+      name: "MemoryUsed"
+      unit: "Megabytes"
+      statistics:
+        - Average
+    -
+      name: "MemoryUtilization"
+      unit: "Percent"
+      statistics:
+        - Average
+    -
+      name: "DiskSpaceAvailable"
+      unit: "Gigabytes"
+      filesystem: "/dev/xvda1"
+      mount_path: "/"
+      statistics:
+        - Average
+    -
+      name: "DiskSpaceUsed"
+      unit: "Gigabytes"
+      filesystem: "/dev/xvda1"
+      mount_path: "/"
+      statistics:
+        - Average
+    -
+      name: "DiskSpaceUtilization"
+      unit: "Percent"
+      filesystem: "/dev/xvda1"
+      mount_path: "/"
       statistics:
         - Average

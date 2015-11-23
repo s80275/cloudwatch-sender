@@ -17,15 +17,15 @@ module Cloudwatch
 
         # previos second
         START_TIME = 10 * 60
-        puts(Time.now.utc - START_TIME)
-        puts(Time.now.utc)
+        #puts(Time.now.utc - START_TIME)
+        #puts(Time.now.utc)
 
         def ec2_metrics(instance_list, component_meta, metric)
           instance_list.each do |instance|
             metric_data = aws_metric_meta(component_meta, metric, instance)
             resp = cloudwatch.get_metric_statistics metric_data
             service = ec2.get_instance_name(instance)
-            puts(instance+":"+service)
+            puts(instance + " : " + service)
             name_metrics(resp, instance, component_meta["ec2_tag_value"], metric["statistics"], service)
           end
         end
@@ -70,7 +70,7 @@ module Cloudwatch
               :timestamp => time,
               :values    => { :value => data[stat.downcase] }
             }
-
+            #puts data
             sender.write_data(data)
           end
         end
