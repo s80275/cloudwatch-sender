@@ -2,11 +2,6 @@ module Cloudwatch
   module Sender
     module Fetcher
       class RDS
-        attr_reader :cloudwatch, :sender
-
-        # previos second
-        START_TIME = 10 * 60
-
         def initialize(cloudwatch, sender)
           @cloudwatch = cloudwatch
           @sender = sender
@@ -27,6 +22,11 @@ module Cloudwatch
         end
 
         private
+
+        attr_reader :cloudwatch, :sender
+
+        # previos second
+        START_TIME = 10 * 60
 
         def name_metrics(resp, name, statistics)
           resp.data["datapoints"].each do |data|

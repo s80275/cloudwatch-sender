@@ -31,6 +31,8 @@ module Cloudwatch
             Object.const_get(class_namespace component_meta)
           when "AWS/SQS"
             Object.const_get(class_namespace component_meta)
+          when "AWS/RDS"
+            Cloudwatch::Sender::Fetcher::RDS
           when "System/Linux"
             Cloudwatch::Sender::Fetcher::Linux
           else

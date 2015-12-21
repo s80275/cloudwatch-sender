@@ -10,195 +10,204 @@ influx_options:
   influx_password: "zaq1xsw2"
 
 metric_types:
-# EC2 Metrics
-# AP
+# RDS
 -
-  namespace: "AWS/EC2"
-  ec2_tag_key: "Type"
-  ec2_tag_value: "AP"
+  namespace: "AWS/RDS"
   metrics:
     -
       name: "CPUUtilization"
       unit: "Percent"
       statistics:
         - Average
-    -
-      name: "NetworkIn"
-      unit: "Bytes"
-      statistics:
-        - Average
-    -
-      name: "NetworkOut"
-      unit: "Bytes"
-      statistics:
-        - Average
-# Nginx
--
-  namespace: "AWS/EC2"
-  ec2_tag_key: "Type"
-  ec2_tag_value: "Nginx"
-  metrics:
-    -
-      name: "CPUUtilization"
-      unit: "Percent"
-      statistics:
-        - Average
-    -
-      name: "NetworkIn"
-      unit: "Bytes"
-      statistics:
-        - Average
-    -
-      name: "NetworkOut"
-      unit: "Bytes"
-      statistics:
-        - Average
-# IDOL
--
-  namespace: "AWS/EC2"
-  ec2_tag_key: "Type"
-  ec2_tag_value: "IDOL"
-  metrics:
-    -
-      name: "CPUUtilization"
-      unit: "Percent"
-      statistics:
-        - Average
-    -
-      name: "NetworkIn"
-      unit: "Bytes"
-      statistics:
-        - Average
-    -
-      name: "NetworkOut"
-      unit: "Bytes"
-      statistics:
-        - Average
-
-## Linux System Metrics
-## AP
--
-  namespace: "System/Linux"
-  ec2_tag_key: "Type"
-  ec2_tag_value: "AP"
-  metrics:
-    -
-      name: "MemoryAvailable"
-      unit: "Megabytes"
-      statistics:
-        - Average
-    -
-      name: "MemoryUsed"
-      unit: "Megabytes"
-      statistics:
-        - Average
-    -
-      name: "MemoryUtilization"
-      unit: "Percent"
-      statistics:
-        - Average
-    -
-      name: "DiskSpaceAvailable"
-      unit: "Gigabytes"
-      filesystem: "/dev/xvda1"
-      mount_path: "/"
-      statistics:
-        - Average
-    -
-      name: "DiskSpaceUsed"
-      unit: "Gigabytes"
-      filesystem: "/dev/xvda1"
-      mount_path: "/"
-      statistics:
-        - Average
-    -
-      name: "DiskSpaceUtilization"
-      unit: "Percent"
-      filesystem: "/dev/xvda1"
-      mount_path: "/"
-      statistics:
-        - Average
-# Nginx
--
-  namespace: "System/Linux"
-  ec2_tag_key: "Type"
-  ec2_tag_value: "Nginx"
-  metrics:
-    -
-      name: "MemoryAvailable"
-      unit: "Megabytes"
-      statistics:
-        - Average
-    -
-      name: "MemoryUsed"
-      unit: "Megabytes"
-      statistics:
-        - Average
-    -
-      name: "MemoryUtilization"
-      unit: "Percent"
-      statistics:
-        - Average
-    -
-      name: "DiskSpaceAvailable"
-      unit: "Gigabytes"
-      filesystem: "/dev/xvda1"
-      mount_path: "/"
-      statistics:
-        - Average
-    -
-      name: "DiskSpaceUsed"
-      unit: "Gigabytes"
-      filesystem: "/dev/xvda1"
-      mount_path: "/"
-      statistics:
-        - Average
-    -
-      name: "DiskSpaceUtilization"
-      unit: "Percent"
-      filesystem: "/dev/xvda1"
-      mount_path: "/"
-      statistics:
-        - Average
-# IDOL
--
-  namespace: "System/Linux"
-  ec2_tag_key: "Type"
-  ec2_tag_value: "IDOL"
-  metrics:
-    -
-      name: "MemoryAvailable"
-      unit: "Megabytes"
-      statistics:
-        - Average
-    -
-      name: "MemoryUsed"
-      unit: "Megabytes"
-      statistics:
-        - Average
-    -
-      name: "MemoryUtilization"
-      unit: "Percent"
-      statistics:
-        - Average
-    -
-      name: "DiskSpaceAvailable"
-      unit: "Gigabytes"
-      filesystem: "/dev/xvda1"
-      mount_path: "/"
-      statistics:
-        - Average
-    -
-      name: "DiskSpaceUsed"
-      unit: "Gigabytes"
-      filesystem: "/dev/xvda1"
-      mount_path: "/"
-      statistics:
-        - Average
-    -
-      name: "DiskSpaceUtilization"
-      unit: "Percent"
-      filesystem: "/dev/xvda1"
-      mount_path: "/"
-      statistics:
-        - Average
+# # EC2 Metrics
+# # AP
+# -
+#   namespace: "AWS/EC2"
+#   ec2_tag_key: "Type"
+#   ec2_tag_value: "AP"
+#   metrics:
+#     -
+#       name: "CPUUtilization"
+#       unit: "Percent"
+#       statistics:
+#         - Average
+#     -
+#       name: "NetworkIn"
+#       unit: "Bytes"
+#       statistics:
+#         - Average
+#     -
+#       name: "NetworkOut"
+#       unit: "Bytes"
+#       statistics:
+#         - Average
+# # Nginx
+# -
+#   namespace: "AWS/EC2"
+#   ec2_tag_key: "Type"
+#   ec2_tag_value: "Nginx"
+#   metrics:
+#     -
+#       name: "CPUUtilization"
+#       unit: "Percent"
+#       statistics:
+#         - Average
+#     -
+#       name: "NetworkIn"
+#       unit: "Bytes"
+#       statistics:
+#         - Average
+#     -
+#       name: "NetworkOut"
+#       unit: "Bytes"
+#       statistics:
+#         - Average
+# # IDOL
+# -
+#   namespace: "AWS/EC2"
+#   ec2_tag_key: "Type"
+#   ec2_tag_value: "IDOL"
+#   metrics:
+#     -
+#       name: "CPUUtilization"
+#       unit: "Percent"
+#       statistics:
+#         - Average
+#     -
+#       name: "NetworkIn"
+#       unit: "Bytes"
+#       statistics:
+#         - Average
+#     -
+#       name: "NetworkOut"
+#       unit: "Bytes"
+#       statistics:
+#         - Average
+#
+# ## Linux System Metrics
+# ## AP
+# -
+#   namespace: "System/Linux"
+#   ec2_tag_key: "Type"
+#   ec2_tag_value: "AP"
+#   metrics:
+#     -
+#       name: "MemoryAvailable"
+#       unit: "Megabytes"
+#       statistics:
+#         - Average
+#     -
+#       name: "MemoryUsed"
+#       unit: "Megabytes"
+#       statistics:
+#         - Average
+#     -
+#       name: "MemoryUtilization"
+#       unit: "Percent"
+#       statistics:
+#         - Average
+#     -
+#       name: "DiskSpaceAvailable"
+#       unit: "Gigabytes"
+#       filesystem: "/dev/xvda1"
+#       mount_path: "/"
+#       statistics:
+#         - Average
+#     -
+#       name: "DiskSpaceUsed"
+#       unit: "Gigabytes"
+#       filesystem: "/dev/xvda1"
+#       mount_path: "/"
+#       statistics:
+#         - Average
+#     -
+#       name: "DiskSpaceUtilization"
+#       unit: "Percent"
+#       filesystem: "/dev/xvda1"
+#       mount_path: "/"
+#       statistics:
+#         - Average
+# # Nginx
+# -
+#   namespace: "System/Linux"
+#   ec2_tag_key: "Type"
+#   ec2_tag_value: "Nginx"
+#   metrics:
+#     -
+#       name: "MemoryAvailable"
+#       unit: "Megabytes"
+#       statistics:
+#         - Average
+#     -
+#       name: "MemoryUsed"
+#       unit: "Megabytes"
+#       statistics:
+#         - Average
+#     -
+#       name: "MemoryUtilization"
+#       unit: "Percent"
+#       statistics:
+#         - Average
+#     -
+#       name: "DiskSpaceAvailable"
+#       unit: "Gigabytes"
+#       filesystem: "/dev/xvda1"
+#       mount_path: "/"
+#       statistics:
+#         - Average
+#     -
+#       name: "DiskSpaceUsed"
+#       unit: "Gigabytes"
+#       filesystem: "/dev/xvda1"
+#       mount_path: "/"
+#       statistics:
+#         - Average
+#     -
+#       name: "DiskSpaceUtilization"
+#       unit: "Percent"
+#       filesystem: "/dev/xvda1"
+#       mount_path: "/"
+#       statistics:
+#         - Average
+# # IDOL
+# -
+#   namespace: "System/Linux"
+#   ec2_tag_key: "Type"
+#   ec2_tag_value: "IDOL"
+#   metrics:
+#     -
+#       name: "MemoryAvailable"
+#       unit: "Megabytes"
+#       statistics:
+#         - Average
+#     -
+#       name: "MemoryUsed"
+#       unit: "Megabytes"
+#       statistics:
+#         - Average
+#     -
+#       name: "MemoryUtilization"
+#       unit: "Percent"
+#       statistics:
+#         - Average
+#     -
+#       name: "DiskSpaceAvailable"
+#       unit: "Gigabytes"
+#       filesystem: "/dev/xvda1"
+#       mount_path: "/"
+#       statistics:
+#         - Average
+#     -
+#       name: "DiskSpaceUsed"
+#       unit: "Gigabytes"
+#       filesystem: "/dev/xvda1"
+#       mount_path: "/"
+#       statistics:
+#         - Average
+#     -
+#       name: "DiskSpaceUtilization"
+#       unit: "Percent"
+#       filesystem: "/dev/xvda1"
+#       mount_path: "/"
+#       statistics:
+#         - Average
