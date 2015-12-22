@@ -13,6 +13,7 @@ require "cloudwatch/sender/fetcher/ec2"
 require "cloudwatch/sender/fetcher/sqs"
 require "cloudwatch/sender/fetcher/custom"
 require "cloudwatch/sender/fetcher/linux"
+require "cloudwatch/sender/fetcher/rds"
 
 module Cloudwatch
   module Sender

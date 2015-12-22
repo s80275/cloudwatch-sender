@@ -70,7 +70,7 @@ module Cloudwatch
               :timestamp => time,
               :values    => { :value => data[stat.downcase] }
             }
-            #puts data
+            # puts data
             sender.write_data(data)
           end
         end

@@ -11,13 +11,14 @@ module Cloudwatch
           resp = cloudwatch.get_metric_statistics(
             :namespace   => component_meta["namespace"],
             :metric_name => metric["name"],
+            :dimensions  => [{ :name => "DBInstanceIdentifier", :value => component_meta["DBInstanceIdentifier"] }],
             :start_time  => Time.now.utc - START_TIME,
             :end_time    => Time.now.utc,
             :period      => 5 * 60,
             :statistics  => metric["statistics"],
             :unit        => metric["unit"]
           )
-          name = component_meta["namespace"].downcase
+          name = component_meta["DBInstanceIdentifier"]
           name_metrics(resp, name, metric["statistics"])
         end
 
@@ -39,13 +40,14 @@ module Cloudwatch
           statistics.each do |stat|
             data = {
               :tags      => {
-                name.tr("^A-Za-z0-9", "") => label.downcase
+                "metrics" => label,
+                "service" => name
               },
               :timestamp => time,
               :values    => { :value => data[stat.downcase] }
             }
-            puts data
-            #sender.write_data(data)
+            # puts data
+            sender.write_data(data)
           end
         end
       end
