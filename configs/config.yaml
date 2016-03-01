@@ -81,7 +81,7 @@ metric_types:
       unit: "Count"
       statistics:
         - Average
-        
+
 # EC2 Metrics
 # AP
 -
@@ -170,6 +170,16 @@ metric_types:
       statistics:
         - Average
     -
+      name: "SwapUsed"
+      unit: "Megabytes"
+      statistics:
+        - Average
+    -
+      name: "SwapUtilization"
+      unit: "Percent"
+      statistics:
+        - Average
+    -
       name: "DiskSpaceAvailable"
       unit: "Gigabytes"
       filesystem: "/dev/xvda1"
@@ -212,6 +222,16 @@ metric_types:
       statistics:
         - Average
     -
+      name: "SwapUsed"
+      unit: "Megabytes"
+      statistics:
+        - Average
+    -
+      name: "SwapUtilization"
+      unit: "Percent"
+      statistics:
+        - Average
+    -
       name: "DiskSpaceAvailable"
       unit: "Gigabytes"
       filesystem: "/dev/xvda1"
@@ -250,6 +270,16 @@ metric_types:
         - Average
     -
       name: "MemoryUtilization"
+      unit: "Percent"
+      statistics:
+        - Average
+    -
+      name: "SwapUsed"
+      unit: "Megabytes"
+      statistics:
+        - Average
+    -
+      name: "SwapUtilization"
       unit: "Percent"
       statistics:
         - Average
