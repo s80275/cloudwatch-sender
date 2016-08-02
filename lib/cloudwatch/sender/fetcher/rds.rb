@@ -14,7 +14,7 @@ module Cloudwatch
             :dimensions  => [{ :name => "DBInstanceIdentifier", :value => component_meta["DBInstanceIdentifier"] }],
             :start_time  => Time.now.utc - START_TIME,
             :end_time    => Time.now.utc,
-            :period      => 5 * 60,
+            :period      => 60,
             :statistics  => metric["statistics"],
             :unit        => metric["unit"]
           )
@@ -27,7 +27,7 @@ module Cloudwatch
         attr_reader :cloudwatch, :sender
 
         # previos second
-        START_TIME = 10 * 60
+        START_TIME = 2 * 60
 
         def name_metrics(resp, name, statistics)
           resp.data["datapoints"].each do |data|
